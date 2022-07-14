@@ -1,0 +1,28 @@
+@charset "utf-8";
+// Option list - Layout
+// 3-1. Flex
+// 3-2. Grid
+// 3-3. Layout
+// 3-4. Spacing
+
+@import "../common/_variables", "../common/_mixins";
+
+/*! ************************************************* 3-1. Flex*************************************************/
+.flex {
+  @include flex(nowrap);
+  & > * {
+    margin-right: 20px;
+  }
+}
+/*! ************************************************* 3-2. Grid*************************************************/
+/*! ************************************************* 3-3. Layout*************************************************/
+/*! ************************************************* 3-4. Spacing*************************************************/
+// pc
+@include createSpacingClassList($spacingName, $position, createSpacingNum(0, 30), false);
+// mob
+@include respond("mob-medium", "pc") {
+  @include createSpacingClassList($spacingName, $position, createSpacingNum(0, 30), true);
+}
+// @include customRespond(360, "pc") {
+//   @include createSpacingClassList($spacingName, $position, createSpacingNum(0, 30), $_responsive: true);
+// }

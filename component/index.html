@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Component</title>
+    <link rel="stylesheet" href="css/common/base.css" />
+    <link rel="stylesheet" href="css/lib/prism.css" />
+    <link rel="stylesheet" href="css/common/component.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head> 
+  <body>
+    <div class="wrapper">
+      <!-- nav side bar -->
+      <nav>
+        <h1>
+          <a href="component.html"> <img src="img/nav/logo-big.png" alt="logo" /><span>COMPONENT</span></a>
+        </h1>
+        <div class="sidebar">
+          <h2 class="menu-title" narrow-text="G">General</h2>
+          <ul>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-button"></span><span>Button</span></button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-color"></span> <span>Color</span></button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-icon"></span><span>Icons</span></button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-font"></span><span> Typography</span></button>
+            </li>
+          </ul>
+          <h2 class="menu-title" narrow-text="N">Navigation</h2>
+          <ul>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-accordion"></span><span>Accordion</span></button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-dropdown"></span><span>Dropdown</span></button>
+            </li>
+            <!-- <li>
+              <button type="button"><span class="ic ic-md left nav-menu"></span><span>Menu</span></button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-page"></span><span>Pagination</span></button>
+            </li> 
+            <li>
+              <button type="button">Steps</button>
+            </li>
+          --></ul>
+          <!-- <h2 class="menu-title" narrow-text="L">Layout</h2>
+          <ul>
+            <li>
+              <button type="button">Flex</button>
+            </li>
+            <li>
+              <button type="button">Grid</button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-layout"></span><span>Layout</span></button>
+            </li>
+            <li>
+              <button type="button">Space</button>
+            </li>
+          </ul> -->
+          <!-- <h2 class="menu-title" narrow-text="D">Display</h2>
+          <ul>
+            <li>
+              <button type="button">Slide</button>
+            </li>
+            <li>
+              <button type="button">Card</button>
+            </li>
+            <li>
+              <button type="button">List</button>
+            </li>
+            <li>
+              <button type="button">Table</button>
+            </li>
+            <li>
+              <button type="button">Tab</button>
+            </li>
+            <li>
+              <button type="button">Timeleft-line</button>
+            </li>
+            <li>
+              <button type="button">TimePicker</button>
+            </li>
+            <li>
+              <button type="button">DatePicker</button>
+            </li>
+            <li>
+              <button type="button">Calendar</button>
+            </li>
+            <li>
+              <button type="button">Tag</button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-tooltip"></span><span>Tooltip</span></button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-tooltip"></span><span> Figure</span></button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-popup"></span><span>Alert</span></button>
+            </li>
+            <li>
+              <button type="button">Modal</button>
+            </li>
+            <li>
+              <button type="button">progress</button>
+            </li>
+            <li>
+              <button type="button">loding</button>
+            </li>
+          </ul> -->
+          <h2 class="menu-title" narrow-text="D">Data</h2>
+          <ul>
+            <!-- <li>
+              <button type="button">Form</button>
+            </li>
+            <li>
+              <button type="button">Checkbox</button>
+            </li>
+            <li>
+              <button type="button"><span class="ic ic-md left nav-input"></span><span>Input</span></button>
+            </li> -->
+            <li>
+              <button type="button"><span class="ic ic-md left nav-input"></span><span>Select</span></button>
+            </li>
+          </ul>
+        </div>
+        <button type="button" class="narrow"></button>
+      </nav>
+      <!-- // nav side bar -->
+      <!-- container -->
+      <div class="container">
+        <div class="floating-content"></div>
+        <!-- General -->
+        <div id="general">
+          <!-- button -->
+          <div class="tab-content button">
+            <h2>Button</h2>
+            <div class="content">
+              <h3>EXAMPLES</h3>
+              <pre><code class="language-html">&lt;!-- type01 --&gt;
+&lt;button class="btn btn-sm bg-primary radius-sm"&gt;Button&lt;/button&gt;
+&lt;!-- type02 --&gt;
+&lt;button class="btn btn-sm bg-primary radius-sm ic ic-md left add white"&gt;Button&lt;/button&gt;
+&lt;!-- type03 --&gt;
+&lt;button class="btn btn-sm bg-primary radius-sm "&gt;
+  &lt;span class="ic ic-md left add white"&gt;&lt;/span&gt; Button 
+&lt;/button&gt;</code></pre>
+              <h3 class="mt30">Option</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <thead>
+                    <th>Style</th>
+                    <th colspan="2">Class</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Radius</th>
+                      <td colspan="2">
+                        <span> .radius-sm </span>
+                        <span> .radius-md </span>
+                        <span> .radius-lg </span>
+                        <span> .radius-full </span>
+                        <span> .radius-none </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Size [button]</th>
+                      <td colspan="2">
+                        <span> .sm </span>
+                        <span> .md </span>
+                        <span> .lg </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Size [icons]</th>
+                      <td colspan="2">
+                        <span> .ic-xx-lg </span>
+                        <span> .ic-x-lg </span>
+                        <span> .ic-lg </span>
+                        <span> .ic-md </span>
+                        <span> .ic-sm </span>
+                        <span> .ic-x-sm </span>
+                        <span> .ic-xx-sm </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Style [type - color]</th>
+                      <td colspan="2">
+                        <span> .bg-primary </span>
+                        <span> .bd-primary </span>
+                        <span> .txt-primary </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Style [type - icons]</th>
+                      <td colspan="2">
+                        <p class="comment">
+                          아이콘 세부 설명은 이곳을 클릭해 주세요.
+                          <button type="button" class="fc-blue400 ic ic-xx-sm only-icon arrow-right blue" onclick="goSection('Icons')">Icons</button>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ul id="buttonComponentList"></ul>
+            </div>
+          </div>
+          <!-- //button -->
+          <!-- color -->
+          <div class="tab-content color">
+            <h2>Color palette</h2>
+            <div class="content">
+              <h3>EXAMPLES</h3>
+              <pre><code class="language-html">&lt;!-- Background Color--&gt;
+&lt;p class="bg-gray25"&gt; Background Color&lt;/p&gt;
+&lt;!-- Font Color --&gt;
+&lt;p class="fg-gray25"&gt;Font Color&lt;/p&gt;</code></pre>
+              <div id="colorComponentList" class="mt30"></div>
+            </div>
+          </div>
+          <!-- //color -->
+          <!-- icon -->
+          <div class="tab-content icon">
+            <h2>Icon</h2>
+            <div class="content">
+              <h3>EXAMPLES</h3>
+              <pre><code class="language-html">&lt;!-- type01 --&gt;
+&lt;button class="btn btn-sm bg-primary radius-sm"&gt;Button&lt;/button&gt;
+&lt;!-- type02 --&gt;
+&lt;button class="btn btn-sm bg-primary radius-sm ic ic-md left add white"&gt;Button&lt;/button&gt;
+&lt;!-- type03 --&gt;
+&lt;button class="btn btn-sm bg-primary radius-sm "&gt;
+  &lt;span class="ic ic-md left add white"&gt;&lt;/span&gt; Button 
+&lt;/button&gt;
+
+&lt;!-- material-icons --&gt;
+&lt;span class="material-icons"&gt;icon name&lt;/span&gt;
+</code></pre>
+              <h3 class="mt30">Option</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>Custom Icon Style (Image)</th>
+                    <th colspan="2">Class</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Default</th>
+                      <td colspan="2">
+                        <span>.ic</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Size</th>
+                      <td colspan="2">
+                        <span> .ic-xx-lg </span>
+                        <span> .ic-x-lg </span>
+                        <span> .ic-lg </span>
+                        <span> .ic-md </span>
+                        <span> .ic-sm </span>
+                        <span> .ic-x-sm </span>
+                        <span> .ic-xx-sm </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Direction</th>
+                      <td colspan="2">
+                        <span>.left</span>
+                        <span>.right</span>
+                        <span>.right.end</span>
+                        <span>.only-icon </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>Material Icon Style</th>
+                    <th colspan="2">Class</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Size</th>
+                      <td colspan="2">
+                        <span> .md-18 </span>
+                        <span> .md-24 </span>
+                        <span> .md-36 </span>
+                        <span> .md-48 </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Color</th>
+                      <td colspan="2">
+                        <span> .md-dark </span>
+                        <span> .md-dark .md-inactive </span>
+                        <span> .md-light </span>
+                        <span> .md-light .md-inactive </span>
+                        <p class="comment">
+                          컬러 세부 설명은 이곳을 클릭해 주세요.
+                          <button type="button" class="fc-blue400 ic ic-xx-sm only-icon arrow-right blue" onclick="goSection('Color')">Color palette</button>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="iconComponentList"></div>
+            </div>
+          </div>
+          <!-- //icon -->
+          <!-- typography -->
+          <div class="tab-content typography">
+            <h2>Typography</h2>
+            <div class="content">
+              <h3>EXAMPLES</h3>
+              <pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>title-fs-xx-lg fw500<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem Ipsum<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+              <h3 class="mt30">Option</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>Text utilities</th>
+                    <th colspan="2">Class</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Font Size (title)</th>
+                      <td colspan="2">
+                        <span> .title-fs-xx-lg </span>
+                        <span> .title-fs-x-lg </span>
+                        <span> .title-fs-lg </span>
+                        <span> .title-fs-md </span>
+                        <span> .title-fs-sm </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Font Size (text)</th>
+                      <td colspan="2">
+                        <span> .fs-xx-lg </span>
+                        <span> .fs-x-lg </span>
+                        <span> .fs-lg </span>
+                        <span> .fs-md </span>
+                        <span> .fs-sm </span>
+                        <span> .fs-x-sm </span>
+                        <span> .fs-xx-sm </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Font Weight</th>
+                      <td colspan="2">
+                        <span> .fw-100 </span>
+                        <span> .fw-300 </span>
+                        <span> .fw-400 </span>
+                        <span> .fw-500 </span>
+                        <span> .fw-700 </span>
+                        <span> .fw-900 </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Font Style</th>
+                      <td colspan="2">
+                        <span> .fsy-lt</span>
+                        <span> .fsy-ob</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Text Decoration</th>
+                      <td colspan="2">
+                        <span> .deco-under</span>
+                        <span> .deco-over</span>
+                        <span> .deco-line</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Text Alignment</th>
+                      <td colspan="2">
+                        <span> .txt-lt</span>
+                        <span> .txt-rt</span>
+                        <span> .txt-ct</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="typographyComponentList"></div>
+            </div>
+          </div>
+          <!-- //typography -->
+        </div>
+        <!-- //General -->
+        <!-- Navigation -->
+        <div id="navigation">
+          <!-- accordion -->
+          <div class="tab-content accordion">
+            <h2>Accordion</h2>
+            <div class="content">
+              <h3>EXAMPLES</h3>
+              <pre><code class="language-html"> &lt;div class="accordion"&gt;
+   &lt;h2&gt;
+     &lt;button type="button" data-accordion-header="1" class="ic ic-sm right end short-arrow-down" &gt;header 1&lt;/button&gt;
+   &lt;/h2&gt;  
+   &lt;div data-accordion-body="1" &gt; body 1 &lt;/div&gt;
+ &lt;/div&gt;
+ 
+ &lt;div class="accordion"&gt;
+   &lt;h2 &gt;
+     &lt;button type="button" data-accordion-header="1"  &gt;
+     header 1 &lt;span class="ic ic-sm right end short-arrow-down"&gt;&lt;/span&gt;
+     &lt;/button&gt;
+   &lt;/h2&gt;  
+   &lt;div data-accordion-body="1" &gt; body 1 &lt;/div&gt;
+ &lt;/div&gt;
+ 
+ &lt;script src="common.js" &gt;&lt;/script&gt;
+ &lt;script src="accordion.js" &gt;&lt;/script&gt;
+ &lt;script&gt;
+  const accordion = new accordion(target, {option});
+  const accordionMulti = new accordion(".accordion", {
+    type: "multi",
+    iconSize: "ic-sm",
+    iconDirection: "right end",
+    toggleIconClass: "short-arrow-down",
+    toggleIconClassOn: "short-arrow-up",
+  });
+ &lt;/script&gt;</code></pre>
+              <h3 class="mt30">Markup</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>Accordion</th>
+                    <th colspan="2">Attribute</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>container</th>
+                      <td colspan="2">.accordion</td>
+                    </tr>
+                    <tr>
+                      <th>Title</th>
+                      <td colspan="2">[data-accordion-header]="index"</td>
+                    </tr>
+                    <tr>
+                      <th>Content</th>
+                      <td colspan="2">[data-accordion-body]="index"</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3 class="mt30">Option</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>Accordion</th>
+                    <th colspan="2">Attribute</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>default</th>
+                      <td colspan="2">
+                        <span> type: "multi" </span>
+                        <span> multiClose: false </span>
+                        <span> iconSize: "ic-sm"</span>
+                        <span> iconDirection: "right end"</span>
+                        <span> toggleIconClass = "short-arrow-down"</span>
+                        <span> toggleIconClassOn = "short-arrow-up"</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Type</th>
+                      <td colspan="2">
+                        <span>single </span>
+                        <span>multi </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>multiClose</th>
+                      <td colspan="2">
+                        <span>true (title, body click close)</span>
+                        <span>false (title click close)</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Icon</th>
+                      <td colspan="2">
+                        <span> iconSize </span>
+                        <span> iconDirection </span>
+                        <span> toggleIconClass </span>
+                        <span> toggleIconClassOn </span>
+                        <p class="comment">
+                          아이콘 세부 설명은 이곳을 클릭해 주세요.
+                          <button type="button" class="fc-blue400 ic ic-xx-sm only-icon arrow-right blue" onclick="goSection('Icons')">Icons</button>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="accordionComponentList">
+                <h3 class="mt30">Single content accordion</h3>
+                <div class="round-box">
+                  <div class="accordion single">
+                    <h2>
+                      <button type="button" data-accordion-header="1">This is panel header 1</button>
+                    </h2>
+                    <div data-accordion-body="1">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                      unchanged.
+                    </div>
+                    <h2><button type="button" data-accordion-header="2">This is panel header 2</button></h2>
+                    <div data-accordion-body="2">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                      unchanged.
+                    </div>
+                    <h2><button type="button" data-accordion-header="3">This is panel header 3</button></h2>
+                    <div data-accordion-body="3">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                      unchanged.
+                    </div>
+                    <h2><button type="button" data-accordion-header="4">This is panel header 4</button></h2>
+                    <div data-accordion-body="4">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                      unchanged.
+                    </div>
+                  </div>
+                </div>
+                <h3 class="mt30">Multi content accordion</h3>
+                <div class="round-box">
+                  <div class="accordion multi">
+                    <h2><button type="button" data-accordion-header="1">This is panel header 1</button></h2>
+                    <div data-accordion-body="1">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                      unchanged.
+                    </div>
+                    <h2><button type="button" data-accordion-header="2">This is panel header 2</button></h2>
+                    <div data-accordion-body="2">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                      unchanged.
+                    </div>
+                    <h2><button type="button" data-accordion-header="3">This is panel header 3</button></h2>
+                    <div data-accordion-body="3">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                      unchanged.
+                    </div>
+                    <h2><button type="button" data-accordion-header="4">This is panel header 4</button></h2>
+                    <div data-accordion-body="4">
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                      took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+                      unchanged.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content dropdown on">
+            <h2>Dropdown</h2>
+            <div class="content">
+              <h3>EXAMPLES</h3>
+              <pre><code class="language-html">&lt;!-- Default --&gt;
+&lt;div class="dropdown"&gt;
+ &lt;button type="button"&gt;Select option ...&lt;/button&gt;
+ &lt;ul&gt;
+   &lt;li&gt;option A&lt;/li&gt;
+   &lt;li&gt;option B&lt;/li&gt;
+   &lt;li&gt;option C&lt;/li&gt;
+   &lt;li&gt;option D&lt;/li&gt;
+   &lt;li&gt;option E&lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/div&gt;
+ 
+&lt;script src="common.js" &gt;&lt;/script&gt;
+&lt;script src="dropdown.js" &gt;&lt;/script&gt;
+&lt;script&gt;
+ const dropdown = new dropdown(target, {option});
+ const dropdown1 = new dropdown(".dropdown", {
+  eventType: "click",
+ });
+&lt;/script&gt;</code></pre>
+              <h3 class="mt30">Markup</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>Dropdown</th>
+                    <th colspan="2">Attribute</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>container</th>
+                      <td colspan="2">.dropdown</td>
+                    </tr>
+                    <tr>
+                      <th>Button</th>
+                      <td colspan="2">[data-dropdown-button]="normal"</td>
+                    </tr>
+                    <tr>
+                      <th>Button Type</th>
+                      <td colspan="2">
+                        <span>normal </span>
+                        <span>slide </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Item</th>
+                      <td colspan="2">[data-dropdown-item]="normal"</td>
+                    </tr>
+                    <tr>
+                      <th>Item Type</th>
+                      <td colspan="2">
+                        <span>normal </span>
+                        <span>nested</span>
+                        <span>accordion</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3 class="mt30">Option</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>Dropdown</th>
+                    <th colspan="2">Attribute</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Event</th>
+                      <td colspan="2">
+                        <span> click (default)</span>
+                        <span> mouseover</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>itemType</th>
+                      <td colspan="2">
+                        <span> accordion</span>
+                        <span> nested</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="dropdownComponentList">
+              <h3 class="mt30">Type</h3>
+
+                <div class="round-box">
+                  <ul class="flex">
+                    <li>
+                      <h4>Default</h4>
+                      <div class="dropdown type1">
+                        <button type="button" data-dropdown-button="normal">Select option ...</button>
+                        <ul data-dropdown-item="normal">
+                          <li>No option</li>
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <h4>Slide</h4>
+                      <div class="dropdown type1-1">
+                        <button type="button" data-dropdown-button="slide">Select option ...</button>
+                        <ul data-dropdown-item="normal">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <h4>Mouseover</h4>
+                      <div class="dropdown type1-2">
+                        <button type="button" data-dropdown-button="slide">Select option ...</button>
+                        <ul data-dropdown-item="normal">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <h4>Icon Dropdown</h4>
+                      <div class="dropdown type1-3">
+                        <button type="button" data-dropdown-button="normal" class="btn radius-circle material-icons">perm_identity</button>
+                        <ul data-dropdown-item="normal">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="round-box mt30">
+                  <ul class="flex">
+                    <li>
+                      <h4>accordion within Dropdown</h4>
+                      <div class="dropdown type2-1">
+                        <button type="button" data-dropdown-button="normal">Select option ...</button>
+                        <div class="accordion multi" data-dropdown-item="accordion">
+                          <h2><button type="button" data-accordion-header="1">category A</button></h2>
+                          <ul data-accordion-body="1">
+                            <li>option A - 1</li>
+                            <li>option A - 2</li>
+                            <li>option A - 3</li>
+                          </ul>
+                          <h2><button type="button" data-accordion-header="2">category B</button></h2>
+                          <ul data-accordion-body="2">
+                            <li>option B - 1</li>
+                            <li>option B - 2</li>
+                            <li>option B - 3</li>
+                          </ul>
+                          <h2><button type="button" data-accordion-header="3">category C</button></h2>
+                          <ul data-accordion-body="3">
+                            <li>option C - 1</li>
+                            <li>option C - 2</li>
+                            <li>option C - 3</li>
+                          </ul>
+                          <h2><button type="button" data-accordion-header="4">category D</button></h2>
+                          <ul data-accordion-body="4">
+                            <li>option D - 1</li>
+                            <li>option D - 2</li>
+                            <li>option D - 3</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <h4>Nested Menu</h4>
+                      <div class="dropdown type2-2">
+                        <button type="button" data-dropdown-button="normal">Select option ...</button>
+                        <ul data-dropdown-item="nested">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- //accordion -->
+        </div>
+        <!-- //Navigation -->
+        <!-- Data -->
+        <div id="data">
+          <div class="tab-content select">
+            <h2>Select box</h2>
+            <div class="content">
+              <h3>EXAMPLES</h3>
+              <pre><code class="language-html">&lt;!-- Default --&gt;
+&lt;div class="select"&gt;
+ &lt;button type="button"&gt;Select option ...&lt;/button&gt;
+ &lt;ul&gt;
+   &lt;li&gt;option A&lt;/li&gt;
+   &lt;li&gt;option B&lt;/li&gt;
+   &lt;li&gt;option C&lt;/li&gt;
+   &lt;li&gt;option D&lt;/li&gt;
+   &lt;li&gt;option E&lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/div&gt;
+ 
+&lt;script src="common.js" &gt;&lt;/script&gt;
+&lt;script src="select.js" &gt;&lt;/script&gt;
+&lt;script&gt;
+ const select = new select(target, {option});
+ const select1 = new select(".select", {
+  eventType: "click",
+  icon: true,
+  iconSize: "ic-sm",
+  iconClass: "check-round blue-on",
+  iconDirection: "right",
+ });
+&lt;/script&gt;</code></pre>
+              <h3 class="mt30">Markup</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>Accordion</th>
+                    <th colspan="2">Attribute</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>container</th>
+                      <td colspan="2">.select</td>
+                    </tr>
+                    <tr>
+                      <th>Button</th>
+                      <td colspan="2">[data-select-button]="normal"</td>
+                    </tr>
+                    <tr>
+                      <th>Item</th>
+                      <td colspan="2">[data-select-item]="normal"</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3 class="mt30">Option</h3>
+              <div class="round-box mb30">
+                <table class="option-list-table">
+                  <colgroup>
+                    <col width="25%" />
+                    <col width="auto" />
+                  </colgroup>
+                  <thead>
+                    <th>select</th>
+                    <th colspan="2">Attribute</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>default</th>
+                      <td colspan="2">
+                        <span> buttonType: "normal" </span>
+                        <span> itemType: "normal" </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Button Type</th>
+                      <td colspan="2">
+                        <span>normal </span>
+                        <span>slide </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Item Type</th>
+                      <td colspan="2">
+                        <span>normal</span>
+                        <span>overlap</span>
+                        <span>full</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>State</th>
+                      <td>
+                        <span>default</span>
+                        <span>disabled</span>
+                        <span>.error</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Active Icon</th>
+                      <td colspan="2">
+                        <span> icon = true or false</span>
+                        <span> iconSize </span>
+                        <span> iconClass </span>
+                        <span> iconDirection </span>
+                        <p class="comment">
+                          아이콘 세부 설명은 이곳을 클릭해 주세요.
+                          <button type="button" class="fc-blue400 ic ic-xx-sm only-icon arrow-right blue" onclick="goSection('Icons')">Icons</button>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="selectComponentList">
+                <div class="round-box">
+                  <ul class="flex">
+                    <li>
+                      <h3>Default</h3>
+                      <div class="select type1">
+                        <button type="button" data-select-button="normal">Select option ...</button>
+                        <ul data-select-item="normal">
+                          <li>No option</li>
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <h3>Error</h3>
+                      <div class="select type1-1">
+                        <button type="button" data-select-button="normal" class="error">Select option ...</button>
+                        <ul data-select-item="normal">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <h3>Disabled</h3>
+                      <div class="select type1-2">
+                        <button type="button" data-select-button="normal" disabled>Select option ...</button>
+                        <ul data-select-item="normal">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="round-box mt30">
+                  <ul class="flex">
+                    <li>
+                      <h3>Overlap</h3>
+                      <div class="select type2">
+                        <button type="button" data-select-button="normal">Select option ...</button>
+                        <ul data-select-item="overlap">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <h3>Full size</h3>
+                      <div class="select type2-1">
+                        <button type="button" data-select-button="normal">Select option ...</button>
+                        <ul data-select-item="full">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="round-box mt30">
+                  <ul class="flex">
+                    <li>
+                      <h3>select input Search</h3>
+                      <div class="select">
+                        <button type="button" data-select-button="normal">Select option ...</button>
+                        <ul data-select-item="normal">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li>
+                      <h3>select within input text field</h3>
+                      <div class="select">
+                        <button type="button" data-select-button="normal">Select option ...</button>
+                        <ul data-select-item="normal">
+                          <li>option A</li>
+                          <li>option B</li>
+                          <li>option C</li>
+                          <li>option D</li>
+                          <li>option E</li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- //Data -->
+      </div>
+      <!-- container -->
+    </div>
+    <script src="js/lib/prism.js"></script>
+    <script src="js/common/nav.js"></script>
+    <script type="module" src="js/common/view.js"></script>
+    <script type="module" src="js/createElement/color.js"></script>
+    <script type="module" src="js/createElement/button.js"></script>
+    <script type="module" src="js/createElement/icon.js"></script>
+    <script type="module" src="js/createElement/typography.js"></script>
+  </body>
+</html>

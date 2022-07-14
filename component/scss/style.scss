@@ -1,0 +1,621 @@
+@charset "utf-8";
+@import "common/_mixins";
+@import "common/_variables";
+$gray25: map-get($grays, 25);
+$gray200: map-get($grays, 200);
+$gray300: map-get($grays, 300);
+$blue50: map-get($blues, 50);
+$min-H-sidebar: 98px;
+$H-sidebar: 130px;
+$min-W-sidebar: 80px;
+$W-sidebar: 250px;
+/*! ************************************************* design style **************************************************/
+body {
+  background-color: $gray25;
+}
+.wrapper {
+  @include container(min);
+  &::after {
+    @include clearfix;
+  }
+}
+nav {
+  @include position(fixed);
+
+  float: left;
+  width: $W-sidebar;
+  height: 100%;
+  background-color: $gray25;
+  transition: all 0.3s;
+  z-index: 2;
+  &.wide {
+    width: $min-W-sidebar;
+    & .sidebar {
+      margin-top: $min-H-sidebar;
+      min-height: calc(100vh - $min-H-sidebar);
+      height: calc(100vh - $min-H-sidebar);
+      & h2 {
+        position: relative;
+        background-color: map-get($grays, 50);
+        font-size: 0;
+        &::after {
+          @include absoluteCenter(55%);
+          @include font($fs-md, 400, $gray-primary);
+          content: attr(narrow-text);
+        }
+      }
+      & ul li button {
+        & .ic {
+          padding: 0 40px 0 8px;
+        }
+        &:hover {
+          padding: 20px 10px 20px 30px;
+          background-color: transparent;
+          &::before {
+            @include position(absolute, left, 54%, top, 53%, -50%, -50%);
+
+            content: "";
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: $blue50;
+            box-shadow: 0px 5px 6px 0px rgb(0 0 0 / 10%);
+          }
+        }
+      }
+    }
+    & h1 {
+      width: $min-W-sidebar;
+      padding-left: 0;
+      padding-right: 0;
+      & a {
+        padding-left: 5px;
+      }
+      & span {
+        @include blind;
+      }
+    }
+  }
+  & h1 {
+    @include position(fixed, left, -1px);
+    @include border(bottom, $gray200);
+
+    width: $W-sidebar;
+    text-align: center;
+    padding: 25px 30px;
+    background-color: $gray25;
+    z-index: 2;
+    transition: all 0.3s;
+    & a {
+      display: block;
+      & img {
+        display: block;
+        margin: 0 auto 10px;
+        width: 40px;
+      }
+      & span {
+        @include font($fs-xx-lg, 700, $color-primary);
+      }
+    }
+  }
+  & .sidebar {
+    margin-top: $H-sidebar;
+    padding-bottom: 20px;
+    min-height: calc(100vh - $H-sidebar);
+    height: calc(100vh - $H-sidebar);
+    overflow-y: auto;
+    & h2 {
+      @include border(top, $gray200);
+      @include border(bottom, $gray200);
+
+      padding: 20px;
+      font-weight: 300;
+      color: $gray-primary;
+      &:first-of-type {
+        border-top: 0;
+      }
+    }
+    & ul {
+      & li {
+        margin-top: 10px;
+        &:last-of-type {
+          margin-bottom: 10px;
+        }
+        & button {
+          position: relative;
+          display: block;
+          width: 100%;
+          padding: 10px 10px 10px 30px;
+          font-weight: 100;
+          text-align: left;
+          white-space: nowrap;
+          overflow: hidden;
+          transition: all 0.3s;
+          &.active {
+            & span:not(.ic) {
+              color: $color-primary;
+            }
+          }
+          &:hover {
+            background: $blue50;
+          }
+        }
+      }
+    }
+  }
+  & .narrow {
+    @include position(absolute, right, 0);
+
+    width: 6px;
+    height: 100%;
+    cursor: pointer;
+    box-shadow: 4px 0px 6px 0px rgb(0 0 0 / 10%);
+    z-index: 2;
+    &:hover {
+      @include border(left, $color-primary);
+
+      background-color: $blue50;
+      border-right: 0;
+      box-shadow: none;
+    }
+    &:hover::before {
+      @include absoluteCenter(onlyT, -64%, -50%);
+
+      content: "";
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      box-shadow: 0px 2px 9px 3px rgb(0 0 0 / 20%);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    &:hover::after {
+      @include position(absolute, right, 0, top, 50%, 0, -50%);
+      @include background(transparent, "../img/ic-short-arrow-left-blue.png");
+
+      content: "";
+      width: 10px;
+      height: 10px;
+      z-index: 2;
+    }
+    &.on {
+      &:hover::after {
+        @include background(transparent, "../img/ic-short-arrow-right-blue.png");
+      }
+    }
+  }
+}
+.ic {
+  // General
+  &.nav-button::before {
+    @include background(transparent, "../img/nav/ic-hand-click.png");
+  }
+  &.nav-button.on::before {
+    @include background(transparent, "../img/nav/ic-hand-click-on.png");
+  }
+  &.nav-color::before {
+    @include background(transparent, "../img/nav/ic-palette.png");
+  }
+  &.nav-color.on::before {
+    @include background(transparent, "../img/nav/ic-palette-on.png");
+  }
+  &.nav-icon::before {
+    @include background(transparent, "../img/nav/ic-box.png");
+  }
+  &.nav-icon.on::before {
+    @include background(transparent, "../img/nav/ic-box-on.png");
+  }
+  &.nav-font::before {
+    @include background(transparent, "../img/nav/ic-text-resize.png");
+  }
+  &.nav-font.on::before {
+    @include background(transparent, "../img/nav/ic-text-resize-on.png");
+  }
+  // Navigation
+  &.nav-accordion::before {
+    @include background(transparent, "../img/nav/ic-accordion.png");
+  }
+  &.nav-accordion.on::before {
+    @include background(transparent, "../img/nav/ic-accordion-on.png");
+  }
+  &.nav-dropdown::before {
+    @include background(transparent, "../img/nav/ic-dropdown.png");
+  }
+  &.nav-dropdown.on::before {
+    @include background(transparent, "../img/nav/ic-dropdown-on.png");
+  }
+  &.nav-menu::before {
+    @include background(transparent, "../img/nav/ic-menu.png");
+  }
+  &.nav-menu.on::before {
+    @include background(transparent, "../img/nav/ic-menu-on.png");
+  }
+  &.nav-input::before {
+    @include background(transparent, "../img/nav/ic-keyboard.png");
+  }
+  &.nav-input.on::before {
+    @include background(transparent, "../img/nav/ic-keyboard-on.png");
+  }
+  &.nav-tooltip::before {
+    @include background(transparent, "../img/nav/ic-message.png");
+  }
+  &.nav-tooltip.on::before {
+    @include background(transparent, "../img/nav/ic-message-on.png");
+  }
+  &.nav-page::before {
+    @include background(transparent, "../img/nav/ic-square.png");
+  }
+  &.nav-page.on::before {
+    @include background(transparent, "../img/nav/ic-square-on.png");
+  }
+  &.nav-popup::before {
+    @include background(transparent, "../img/nav/ic-box-multiple.png");
+  }
+  &.nav-popup.on::before {
+    @include background(transparent, "../img/nav/ic-box-multiple-on.png");
+  }
+  &.nav-layout::before {
+    @include background(transparent, "../img/nav/ic-layout-board-split.png");
+  }
+  &.nav-layout.on::before {
+    @include background(transparent, "../img/nav/ic-layout-board-split-on.png");
+  }
+}
+.container {
+  width: calc(100% - $W-sidebar);
+  float: right;
+  transition: all 0.3s;
+  background-color: map-get($grays, 100);
+  &.wide {
+    width: calc(100% - $min-W-sidebar);
+    & .tab-content > h2 {
+      width: calc(100% - $min-W-sidebar);
+      left: $min-W-sidebar;
+    }
+  }
+}
+.floating-content {
+  @include position(fixed, left, 50%, top, 40%, -50%, -50%);
+  @include font($fs-sm, 400 $gray25);
+
+  width: auto;
+  padding: 10px 26px;
+  background: rgba(17, 17, 17, 0.7);
+  border-radius: 8px;
+  opacity: 0;
+  transition: all 0.7s;
+  z-index: 1;
+  &.on {
+    opacity: 1;
+    top: 50%;
+  }
+}
+.tab-content {
+  display: none;
+  &.on {
+    display: block;
+  }
+  & > h2 {
+    @include position(fixed, left, $W-sidebar);
+    @include font($fs-xx-lg, 500, $gray-secondery);
+
+    width: 100%;
+    height: $min-H-sidebar;
+    padding: 30px;
+    border-bottom: 1px solid $gray200;
+    background: $gray25;
+    transition: all 0.3s;
+    z-index: 1;
+    & + .content {
+      padding: 150px 50px 50px;
+      min-height: 100vh;
+      & .round-box {
+        background-color: $gray25;
+        padding: 25px;
+        border-radius: 16px;
+      }
+    }
+  }
+  & h3 {
+    @include font($fs-x-lg, 500, $gray-secondery);
+
+    margin-bottom: 20px;
+  }
+  & h4 {
+    @include font($fs-lg, 500, $gray-secondery);
+
+    margin-bottom: 20px;
+  }
+  & table.option-list-table {
+    width: 100%;
+    & tr:nth-of-type(2n) {
+      background-color: map-get($grays, 100);
+    }
+    & th {
+      font-weight: normal;
+      vertical-align: middle;
+    }
+    & th,
+    & td {
+      padding: 10px;
+    }
+    & thead {
+      & th {
+        background-color: map-get($grays, 400);
+        color: $gray25;
+        &:first-of-type {
+          border-radius: 10px 0 0 0;
+        }
+        &:last-of-type {
+          border-radius: 0 10px 0 0;
+        }
+      }
+    }
+    & tbody {
+      & tr:last-of-type {
+        & th:first-of-type {
+          border-radius: 0 0 0 10px;
+        }
+        & td:last-of-type {
+          border-radius: 0 0 10px 0;
+        }
+      }
+
+      & td {
+        font-weight: 100;
+      }
+      & span {
+        @include border;
+
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        padding: 5px;
+        border-radius: map-get($radius, sm);
+      }
+    }
+  }
+  & .comment {
+    @include font($fs-sm, 400, $gray-primary);
+
+    padding: 5px;
+    & button {
+      vertical-align: baseline;
+    }
+  }
+}
+
+#buttonComponentList {
+  & li {
+    margin-bottom: 30px;
+    & .flex {
+      flex-flow: row wrap;
+    }
+    & .round-box {
+      margin-bottom: 30px;
+      &.responsive {
+        width: 32%;
+        margin-right: 2%;
+
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    & table {
+      width: 100%;
+      & thead {
+        @include border(top);
+        @include border(bottom);
+        & th:nth-of-type(5) {
+          @include border(left);
+        }
+      }
+      & tbody {
+        @include border(bottom);
+        & th {
+          @include border(right);
+          &:last-of-type {
+            @include border(left);
+          }
+        }
+      }
+      & th {
+        text-align: center;
+        vertical-align: middle;
+        padding: 20px;
+      }
+      & td {
+        padding: 20px;
+        text-align: center;
+      }
+      & span {
+        @include font($fs-x-sm);
+      }
+      & button {
+        @include font($fs-sm, 400, $color-primary);
+
+        display: inline-block;
+        margin: 10px;
+        white-space: nowrap;
+        &.bg-primary {
+          color: $gray25;
+        }
+      }
+    }
+  }
+}
+@include customRespond(2100, "pc") {
+  #buttonComponentList li {
+    & .round-box.responsive {
+      width: 49%;
+      margin-right: 2%;
+      &:nth-child(3n) {
+        margin-right: 2%;
+      }
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+#colorComponentList {
+  & li {
+    position: relative;
+    width: calc((100% - 200px) / 11);
+    margin-bottom: 40px;
+    box-shadow: 0px 12px 20px -4px rgb(16 24 40 / 20%), -5px -2px 10px 0px rgb(16 24 40 / 5%);
+    border-radius: 12px;
+    &:nth-of-type(11n) {
+      margin-right: 0;
+    }
+    & div {
+      padding: 10px;
+      margin-top: 70px;
+      background: white;
+      border-radius: 0 0 12px 12px;
+      & p {
+        @include font($fs-sm);
+
+        margin-bottom: 3px;
+        &:last-of-type {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+      & button {
+        @include font($fs-sm);
+
+        display: block;
+        margin-top: 10px;
+        border: 1px solid #eee;
+        padding: 6px 10px;
+        width: 100%;
+        border-radius: map-get($radius, "lg");
+        &:first-of-type {
+          text-shadow: 0 0 2px $gray25;
+        }
+        &:last-of-type {
+          text-shadow: 0 0 2px #888888;
+        }
+      }
+    }
+  }
+}
+
+#iconComponentList {
+  ul:not(#customIcons) {
+    li {
+      @include border(full, $gray200, 2px);
+
+      background-color: $gray25;
+      border-bottom: 0;
+      cursor: pointer;
+
+      &:first-of-type {
+        border-radius: 20px 20px 0 0;
+      }
+      &:last-of-type {
+        @include border(bottom, $gray200, 2px);
+
+        border-radius: 0 0 20px 20px;
+      }
+      &.on {
+        & div {
+          display: flex;
+        }
+        & h4 {
+          @include border(bottom, $gray200, 2px, dashed);
+          &::after {
+            @include background(transparent, "../img/" + map-get($icShortArrowUp, "default"));
+          }
+        }
+      }
+      & div {
+        display: none;
+        flex-flow: row wrap;
+        justify-content: center;
+      }
+      & h4 {
+        margin-bottom: 0;
+        padding: 20px 30px;
+        &::after {
+          @include background(transparent, "../img/" + map-get($icShortArrowDown, "default"));
+
+          content: "";
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          margin-left: 10px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  & button {
+    width: 120px;
+    height: 120px;
+    margin: 20px;
+    padding: 10px 15px 15px;
+    flex: 0 0 auto;
+    background: white;
+    box-shadow: 0px 7px 10px -4px rgb(16 24 40 / 20%), -5px -2px 10px 0px rgb(16 24 40 / 5%);
+    border-radius: 12px;
+    vertical-align: top;
+    text-align: center;
+    &:hover {
+      background: map-get($blues, 25);
+    }
+    &:focus {
+      outline: 1px solid map-get($blues, 500);
+    }
+    & span {
+      vertical-align: middle;
+    }
+    & p {
+      @include font($fs-sm);
+
+      margin-top: 10px;
+      word-break: keep-all;
+    }
+  }
+  & #customIcons {
+    & li {
+      @include flex(wrap, center);
+    }
+    & button {
+      width: 130px;
+      height: 130px;
+      background: #e5e7e8;
+      &:hover {
+        background: #dadbdd;
+      }
+    }
+  }
+}
+#typographyComponentList {
+  & div {
+    &:nth-of-type(n + 3):nth-of-type(-n + 6) table td:last-of-type {
+      width: 75%;
+    }
+  }
+  & table {
+    width: 100%;
+    & td {
+      @include border(bottom, $gray200, 1px);
+      padding: 15px 20px;
+      &:last-of-type {
+        width: 50%;
+      }
+    }
+  }
+}
+.tab-content.accordion {
+  border: 0;
+}
+#dropdownComponentList {
+  padding-bottom: 300px;
+}

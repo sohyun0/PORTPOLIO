@@ -1,0 +1,430 @@
+@charset "utf-8";
+//  Option list - General
+// 1-1. Color
+// 1-2. Button
+// 1-3. Icons
+// 1-4. Typography
+
+@import "../common/_variables", "../common/_mixins";
+
+/*! ************************************************* 1-1. Color **************************************************/
+
+$color-primary: map-get($blues, 400);
+$color-secondery: map-get($blues, 100);
+$gray-primary: map-get($grays, 500);
+$gray-secondery: map-get($grays, 700);
+.white {
+  color: #{$white};
+}
+.black {
+  color: #{$black};
+}
+@each $colorNum, $colorCode in $grays {
+  .bg-gray#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-gray#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $reds {
+  .bg-red#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-red#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $oranges {
+  .bg-orange#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-orange#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $yellows {
+  .bg-yellow#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-yellow#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $limes {
+  .bg-lime#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-lime#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $lightGreens {
+  .bg-lightGreen#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-lightGreen#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $greens {
+  .bg-green#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-green#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $teals {
+  .bg-teal#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-teal#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $cyans {
+  .bg-cyan#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-cyan#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $lightBlues {
+  .bg-lightBlue#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-lightBlue#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $blues {
+  .bg-blue#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-blue#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $browns {
+  .bg-brown#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-brown#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $pinks {
+  .bg-pink#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-pink#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $purples {
+  .bg-purple#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-purple#{$colorNum} {
+    color: $colorCode;
+  }
+}
+@each $colorNum, $colorCode in $purpleBlues {
+  .bg-purpleBlue#{$colorNum} {
+    background: $colorCode;
+  }
+  .fc-purpleBlue#{$colorNum} {
+    color: $colorCode;
+  }
+}
+
+/*! ************************************************* 1-2. Button **************************************************/
+
+.btn {
+  display: inline-block;
+  line-height: 1;
+  @each $btnSizeName, $top, $right, $bottom, $left in $btnSize {
+    &-#{$btnSizeName} {
+      padding: $top $right $bottom $left;
+    }
+  }
+  @each $radiusSizeName, $radius in $radius {
+    &.radius-#{$radiusSizeName} {
+      border-radius: $radius;
+    }
+  }
+  //Standard stlye btn
+  // bg-style
+  &.bg-#{nth($btnStylePrimary, 1)} {
+    background-color: nth($btnStylePrimary, 2);
+    color: nth($btnStylePrimary, 5);
+    &:hover {
+      background-color: nth($btnStylePrimary, 3);
+    }
+    &:active,
+    &:focus {
+      outline: 2px solid nth($btnStylePrimary, 3);
+      outline-offset: -2px;
+    }
+    &:disabled {
+      background-color: nth($btnStylePrimary, 6);
+      border: none;
+      outline: none;
+      cursor: default;
+      color: nth($btnStylePrimary, 7);
+    }
+  }
+  // border-style
+  &.bd-#{nth($btnStylePrimary, 1)} {
+    border: 1px solid nth($btnStylePrimary, 2);
+    color: nth($btnStylePrimary, 2);
+    &:hover {
+      background-color: nth($btnStylePrimary, 4);
+    }
+    &:active,
+    &:focus {
+      background-color: nth($btnStylePrimary, 4);
+      outline: 2px solid #{nth($btnStylePrimary, 2)};
+      outline-offset: -2px;
+    }
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid nth($btnStylePrimary, 6);
+      outline: none;
+      cursor: default;
+      color: nth($btnStylePrimary, 7);
+    }
+  }
+  //text
+  &.txt-#{nth($btnStylePrimary, 1)} {
+    color: nth($btnStylePrimary, 2);
+    &:hover {
+      background-color: nth($btnStylePrimary, 4);
+    }
+    &:active,
+    &:focus {
+      background-color: nth($btnStylePrimary, 4);
+      outline: 2px solid #{nth($btnStylePrimary, 2)};
+      outline-offset: -2px;
+    }
+    &:disabled {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      cursor: default;
+      color: nth($btnStylePrimary, 7);
+    }
+  }
+
+  // custom style btn
+  @each $btnBg, $bg, $hover, $active, $font in $btnBg {
+    &.#{$btnBg} {
+      background-color: $bg;
+      color: $font;
+    }
+    &.#{$btnBg} {
+      &:hover {
+        background-color: $hover;
+      }
+      &:active {
+        background-color: $bg;
+        outline: 2px solid $active;
+        outline-offset: -2px;
+      }
+    }
+  }
+  @each $btnBorder, $bg, $bd, $hover, $active, $font in $btnBorder {
+    &.#{$btnBorder} {
+      background-color: $bg;
+      border: 1px solid $bd;
+      color: $font;
+    }
+    &.#{$btnBorder} {
+      &:hover {
+        background-color: $hover;
+      }
+      &:active {
+        outline: 2px solid $active;
+        outline-offset: -1px;
+      }
+    }
+  }
+}
+
+/*! ************************************************* 1-3. Icon **************************************************/
+
+.ic {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  @each $size-name, $width, $height in $icSize {
+    &-#{$size-name}::before {
+      width: $width;
+      height: $height;
+    }
+    &-#{$size-name}.right::after {
+      width: $width;
+      height: $height;
+    }
+  }
+
+  //icons
+  &[class*=" only-icon"] {
+    &::before {
+      @include emptyContent;
+
+      position: relative;
+      top: 0;
+      left: 0px;
+      vertical-align: middle;
+    }
+  }
+  &[class*=" left"]:not(.only-icon) {
+    &::before {
+      @include emptyContent;
+
+      position: relative;
+      top: 0;
+      left: -5px;
+      vertical-align: middle;
+    }
+  }
+  &[class*=" right"]:not(.only-icon) {
+    &::after {
+      @include emptyContent;
+      position: relative;
+      top: 0;
+      right: -5px;
+      vertical-align: middle;
+    }
+    &.end::after {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  @each $iconName, $iconUrl in $icSearch {
+    @include bgIcon(left, search, $iconName, $icSearch, $iconName);
+    @include bgIcon(right, search, $iconName, $icSearch, $iconName);
+  }
+  @each $iconName, $iconUrl in $icAdd {
+    @include bgIcon(left, add, $iconName, $icAdd, $iconName);
+    @include bgIcon(right, add, $iconName, $icAdd, $iconName);
+  }
+  @each $iconName, $iconUrl in $icArrowUp {
+    @include bgIcon(left, arrow-up, $iconName, $icArrowUp, $iconName);
+    @include bgIcon(right, arrow-up, $iconName, $icArrowUp, $iconName);
+  }
+  @each $iconName, $iconUrl in $icArrowDown {
+    @include bgIcon(left, arrow-down, $iconName, $icArrowDown, $iconName);
+    @include bgIcon(right, arrow-down, $iconName, $icArrowDown, $iconName);
+  }
+  @each $iconName, $iconUrl in $icArrowLeft {
+    @include bgIcon(left, arrow-left, $iconName, $icArrowLeft, $iconName);
+    @include bgIcon(right, arrow-left, $iconName, $icArrowLeft, $iconName);
+  }
+  @each $iconName, $iconUrl in $icArrowRight {
+    @include bgIcon(left, arrow-right, $iconName, $icArrowRight, $iconName);
+    @include bgIcon(right, arrow-right, $iconName, $icArrowRight, $iconName);
+  }
+  @each $iconName, $iconUrl in $icShortArrowUp {
+    @include bgIcon(left, short-arrow-up, $iconName, $icShortArrowUp, $iconName);
+    @include bgIcon(right, short-arrow-up, $iconName, $icShortArrowUp, $iconName);
+  }
+  @each $iconName, $iconUrl in $icShortArrowDown {
+    @include bgIcon(left, short-arrow-down, $iconName, $icShortArrowDown, $iconName);
+    @include bgIcon(right, short-arrow-down, $iconName, $icShortArrowDown, $iconName);
+  }
+  @each $iconName, $iconUrl in $icShortArrowLeft {
+    @include bgIcon(left, short-arrow-left, $iconName, $icShortArrowLeft, $iconName);
+    @include bgIcon(right, short-arrow-left, $iconName, $icShortArrowLeft, $iconName);
+  }
+  @each $iconName, $iconUrl in $icShortArrowRight {
+    @include bgIcon(left, short-arrow-right, $iconName, $icShortArrowRight, $iconName);
+    @include bgIcon(right, short-arrow-right, $iconName, $icShortArrowRight, $iconName);
+  }
+  @each $iconName, $iconUrl in $icClose {
+    @include bgIcon(left, close, $iconName, $icClose, $iconName);
+    @include bgIcon(right, close, $iconName, $icClose, $iconName);
+  }
+  @each $iconName, $iconUrl in $icSquareArrow {
+    @include bgIcon(left, square-arrow, $iconName, $icSquareArrow, $iconName);
+    @include bgIcon(right, square-arrow, $iconName, $icSquareArrow, $iconName);
+  }
+  @each $iconName, $iconUrl in $icSquareDoubleArrow {
+    @include bgIcon(left, square-double-arrow, $iconName, $icSquareDoubleArrow, $iconName);
+    @include bgIcon(right, square-double-arrow, $iconName, $icSquareDoubleArrow, $iconName);
+  }
+  @each $iconName, $iconUrl in $icRadioLine {
+    @include bgIcon(left, radio-line, $iconName, $icRadioLine, $iconName);
+    @include bgIcon(right, radio-line, $iconName, $icRadioLine, $iconName);
+  }
+  @each $iconName, $iconUrl in $icCheckRound {
+    @include bgIcon(left, check-round, $iconName, $icCheckRound, $iconName);
+    @include bgIcon(right, check-round, $iconName, $icCheckRound, $iconName);
+  }
+  @each $iconName, $iconUrl in $icCheckSquare {
+    @include bgIcon(left, check-square, $iconName, $icCheckSquare, $iconName);
+    @include bgIcon(right, check-square, $iconName, $icCheckSquare, $iconName);
+  }
+  @each $iconName, $iconUrl in $icMoreCircle {
+    @include bgIcon(left, more, $iconName, $icMoreCircle, $iconName);
+    @include bgIcon(right, more, $iconName, $icMoreCircle, $iconName);
+  }
+  @each $iconName, $iconUrl in $icFile {
+    @include bgIcon(left, file, $iconName, $icFile, $iconName);
+    @include bgIcon(right, file, $iconName, $icFile, $iconName);
+  }
+}
+
+/*! ************************************************* 1-4. Typography **************************************************/
+
+@each $fontName, $fontSize, $lineHeight, $letterSpacing in $titleFont {
+  .title-fs {
+    &-#{$fontName} {
+      font-size: #{$fontSize};
+      line-height: #{$lineHeight};
+      letter-spacing: #{$letterSpacing};
+    }
+  }
+}
+@each $fontName, $fontSize, $lineHeight, $letterSpacing in $contentFont {
+  .fs {
+    &-#{$fontName} {
+      font-size: #{$fontSize};
+      line-height: #{$lineHeight};
+      letter-spacing: #{$letterSpacing};
+    }
+  }
+}
+@each $weightName, $weight in $fontWeight {
+  .fw {
+    &-#{$weight} {
+      font-weight: $weight;
+    }
+  }
+}
+@each $styleName, $style in $fontStyle {
+  .fsy {
+    &-#{$styleName} {
+      font-style: $style;
+    }
+  }
+}
+@each $decoName, $deco in $textDecoration {
+  .deco {
+    &-#{$decoName} {
+      text-decoration: $deco;
+    }
+  }
+}
+@each $alignName, $align in $textAlignment {
+  .txt {
+    &-#{$alignName} {
+      text-align: $align;
+    }
+  }
+}

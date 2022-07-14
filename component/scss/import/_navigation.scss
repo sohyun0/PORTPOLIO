@@ -1,0 +1,143 @@
+@charset "utf-8";
+// Option list - Navigation
+// 2-1. Accordion
+// 2-2. Dropdown
+// 2-3. Menu
+// 2-4. Pagination
+// 2-5. Steps
+
+@import "../common/_variables", "../common/_mixins";
+$gray25: map-get($grays, 25);
+$gray200: map-get($grays, 200);
+$gray300: map-get($grays, 300);
+/*! ************************************************* 2-1. Accordion **************************************************/
+.accordion {
+  @include border;
+
+  border-radius: map-get($radius, sm);
+  & h2:last-of-type button {
+    border-width: 0;
+  }
+  & h2:last-of-type button[data-accordion-toggle="true"] {
+    border-width: 1px;
+  }
+}
+[data-accordion-header] {
+  @include border(bottom);
+
+  display: block;
+  width: 100%;
+  position: relative;
+  padding: map-get($gridPX, x4) map-get($gridPX, x6);
+  text-align: left;
+  &[data-accordion-toggle="true"] {
+    background-color: map-get($grays, 100);
+  }
+  &:first-of-type {
+    border-radius: map-get($radius, sm) map-get($radius, sm) 0 0;
+  }
+}
+[data-accordion-body] {
+  display: none;
+  &.on {
+    @include border(bottom);
+
+    display: block;
+    padding: map-get($gridPX, x4) map-get($gridPX, x6);
+  }
+  &:last-of-type {
+    border-width: 0;
+    border-radius: 0 0 map-get($radius, sm) map-get($radius, sm);
+  }
+}
+/*! ************************************************* 2-2. Dropdown **************************************************/
+.dropdown {
+  position: relative;
+  & [data-dropdown-button] {
+    @include border;
+
+    border-radius: map-get($radius, sm);
+    padding: map-get($gridPX, x3) map-get($gridPX, x4);
+    &:hover {
+      @include border(full, $color-primary);
+    }
+    &:active {
+      @include border(full, $color-primary);
+      outline: 1px solid $color-primary;
+    }
+    &:disabled {
+      color: map-get($grays, 100);
+      background-color: $gray300;
+      cursor: default;
+      &:hover {
+        @include border(full, $gray300);
+      }
+      &:active {
+        @include border(full, $gray300);
+        outline: 0;
+      }
+    }
+    &.on {
+      @include border(full, $color-primary);
+    }
+    &.error {
+      @include border(full, map-get($reds, 500));
+      &:hover {
+        @include border(full, $color-primary);
+      }
+    }
+    &.radius-circle {
+      padding: map-get($gridPX, x3);
+      border-radius: 50%;
+    }
+  }
+  & [data-dropdown-button="slide"] + [data-dropdown-item] {
+    @include show;
+    opacity: 0;
+    &.on {
+      opacity: 1;
+      & li {
+        @include show(slide, auto, 0.2s);
+        padding: map-get($gridPX, x3) map-get($gridPX, x4);
+      }
+    }
+    & li {
+      @include hide(slide, 0.2s);
+      padding: 0 map-get($gridPX, x4);
+
+      display: block;
+    }
+  }
+  & [data-dropdown-item] {
+    @include position(absolute, left, 0, top, 55px);
+    @include hide;
+    border-radius: map-get($radius, sm);
+    background-color: #fff;
+    box-shadow: 0px 0px 7px 1px #cccfd3;
+    transition: all 0.2s;
+    z-index: 1;
+    &.on {
+      @include show;
+    }
+    & li {
+      padding: map-get($gridPX, x3) map-get($gridPX, x4);
+
+      &:hover {
+        background-color: $color-secondery;
+      }
+      width: 100%;
+      white-space: nowrap;
+    }
+  }
+  & [data-dropdown-item="accordion"] {
+    & [data-accordion-header] {
+      padding: map-get($gridPX, x3) map-get($gridPX, x4);
+    }
+    & [data-accordion-body].on {
+      padding: 0;
+    }
+  }
+}
+/*! ************************************************* 2-3. Menu **************************************************/
+/*! ************************************************* 2-4. Pagination **************************************************/
+/*! ************************************************* 2-5. Steps **************************************************/

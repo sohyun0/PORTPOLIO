@@ -1,0 +1,679 @@
+/*! ************************************************* design style **************************************************/
+body {
+  background-color: #fcfcfc;
+}
+
+.wrapper {
+  width: 100%;
+  min-width: 1600px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+.wrapper::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(0, 0);
+  float: left;
+  width: 250px;
+  height: 100%;
+  background-color: #fcfcfc;
+  transition: all 0.3s;
+  z-index: 2;
+}
+nav.wide {
+  width: 80px;
+}
+nav.wide .sidebar {
+  margin-top: 98px;
+  min-height: calc(100vh - 98px);
+  height: calc(100vh - 98px);
+}
+nav.wide .sidebar h2 {
+  position: relative;
+  background-color: #f9f9fa;
+  font-size: 0;
+}
+nav.wide .sidebar h2::after {
+  position: absolute;
+  top: 50;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  color: #83878f;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.02rem;
+  content: attr(narrow-text);
+}
+nav.wide .sidebar ul li button .ic {
+  padding: 0 40px 0 8px;
+}
+nav.wide .sidebar ul li button:hover {
+  padding: 20px 10px 20px 30px;
+  background-color: transparent;
+}
+nav.wide .sidebar ul li button:hover::before {
+  position: absolute;
+  left: 54%;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  content: "";
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #eff8ff;
+  box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.1);
+}
+nav.wide h1 {
+  width: 80px;
+  padding-left: 0;
+  padding-right: 0;
+}
+nav.wide h1 a {
+  padding-left: 5px;
+}
+nav.wide h1 span {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999em;
+  z-index: -100;
+}
+nav h1 {
+  position: fixed;
+  left: -1px;
+  top: 0;
+  transform: translate(0, 0);
+  border-bottom: 1px solid #e4e5e8;
+  width: 250px;
+  text-align: center;
+  padding: 25px 30px;
+  background-color: #fcfcfc;
+  z-index: 2;
+  transition: all 0.3s;
+}
+nav h1 a {
+  display: block;
+}
+nav h1 a img {
+  display: block;
+  margin: 0 auto 10px;
+  width: 40px;
+}
+nav h1 a span {
+  color: #5379fd;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.02rem;
+}
+nav .sidebar {
+  margin-top: 130px;
+  padding-bottom: 20px;
+  min-height: calc(100vh - 130px);
+  height: calc(100vh - 130px);
+  overflow-y: auto;
+}
+nav .sidebar h2 {
+  border-top: 1px solid #e4e5e8;
+  border-bottom: 1px solid #e4e5e8;
+  padding: 20px;
+  font-weight: 300;
+  color: #83878f;
+}
+nav .sidebar h2:first-of-type {
+  border-top: 0;
+}
+nav .sidebar ul li {
+  margin-top: 10px;
+}
+nav .sidebar ul li:last-of-type {
+  margin-bottom: 10px;
+}
+nav .sidebar ul li button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 10px 10px 10px 30px;
+  font-weight: 100;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+nav .sidebar ul li button.active span:not(.ic) {
+  color: #5379fd;
+}
+nav .sidebar ul li button:hover {
+  background: #eff8ff;
+}
+nav .narrow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(0, 0);
+  width: 6px;
+  height: 100%;
+  cursor: pointer;
+  box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+nav .narrow:hover {
+  border-left: 1px solid #5379fd;
+  background-color: #eff8ff;
+  border-right: 0;
+  box-shadow: none;
+}
+nav .narrow:hover::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-64%, -50%);
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  box-shadow: 0px 2px 9px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  z-index: 1;
+}
+nav .narrow:hover::after {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  background: transparent url("../img/ic-short-arrow-left-blue.png") no-repeat center;
+  background-size: contain;
+  content: "";
+  width: 10px;
+  height: 10px;
+  z-index: 2;
+}
+nav .narrow.on:hover::after {
+  background: transparent url("../img/ic-short-arrow-right-blue.png") no-repeat center;
+  background-size: contain;
+}
+
+.ic.nav-button::before {
+  background: transparent url("../img/nav/ic-hand-click.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-button.on::before {
+  background: transparent url("../img/nav/ic-hand-click-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-color::before {
+  background: transparent url("../img/nav/ic-palette.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-color.on::before {
+  background: transparent url("../img/nav/ic-palette-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-icon::before {
+  background: transparent url("../img/nav/ic-box.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-icon.on::before {
+  background: transparent url("../img/nav/ic-box-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-font::before {
+  background: transparent url("../img/nav/ic-text-resize.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-font.on::before {
+  background: transparent url("../img/nav/ic-text-resize-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-accordion::before {
+  background: transparent url("../img/nav/ic-accordion.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-accordion.on::before {
+  background: transparent url("../img/nav/ic-accordion-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-dropdown::before {
+  background: transparent url("../img/nav/ic-dropdown.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-dropdown.on::before {
+  background: transparent url("../img/nav/ic-dropdown-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-menu::before {
+  background: transparent url("../img/nav/ic-menu.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-menu.on::before {
+  background: transparent url("../img/nav/ic-menu-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-input::before {
+  background: transparent url("../img/nav/ic-keyboard.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-input.on::before {
+  background: transparent url("../img/nav/ic-keyboard-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-tooltip::before {
+  background: transparent url("../img/nav/ic-message.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-tooltip.on::before {
+  background: transparent url("../img/nav/ic-message-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-page::before {
+  background: transparent url("../img/nav/ic-square.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-page.on::before {
+  background: transparent url("../img/nav/ic-square-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-popup::before {
+  background: transparent url("../img/nav/ic-box-multiple.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-popup.on::before {
+  background: transparent url("../img/nav/ic-box-multiple-on.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-layout::before {
+  background: transparent url("../img/nav/ic-layout-board-split.png") no-repeat center;
+  background-size: contain;
+}
+.ic.nav-layout.on::before {
+  background: transparent url("../img/nav/ic-layout-board-split-on.png") no-repeat center;
+  background-size: contain;
+}
+
+.container {
+  width: calc(100% - 250px);
+  float: right;
+  transition: all 0.3s;
+  background-color: #f1f2f4;
+}
+.container.wide {
+  width: calc(100% - 80px);
+}
+.container.wide .tab-content > h2 {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.floating-content {
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  color: #111;
+  font-size: 0.875rem;
+  font-weight: 400 #fcfcfc;
+  line-height: 1.42;
+  letter-spacing: -0.02rem;
+  width: auto;
+  padding: 10px 26px;
+  background: rgba(17, 17, 17, 0.7);
+  border-radius: 8px;
+  opacity: 0;
+  transition: all 0.7s;
+  z-index: 1;
+}
+.floating-content.on {
+  opacity: 1;
+  top: 50%;
+}
+
+.tab-content {
+  display: none;
+}
+.tab-content.on {
+  display: block;
+}
+.tab-content > h2 {
+  position: fixed;
+  left: 250px;
+  top: 0;
+  transform: translate(0, 0);
+  color: #414650;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02rem;
+  width: 100%;
+  height: 98px;
+  padding: 30px;
+  border-bottom: 1px solid #e4e5e8;
+  background: #fcfcfc;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.tab-content > h2 + .content {
+  padding: 150px 50px 50px;
+  min-height: 100vh;
+}
+.tab-content > h2 + .content .round-box {
+  background-color: #fcfcfc;
+  padding: 25px;
+  border-radius: 16px;
+}
+.tab-content h3 {
+  color: #414650;
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.02rem;
+  margin-bottom: 20px;
+}
+.tab-content h4 {
+  color: #414650;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.02rem;
+  margin-bottom: 20px;
+}
+.tab-content table.option-list-table {
+  width: 100%;
+}
+.tab-content table.option-list-table tr:nth-of-type(2n) {
+  background-color: #f1f2f4;
+}
+.tab-content table.option-list-table th {
+  font-weight: normal;
+  vertical-align: middle;
+}
+.tab-content table.option-list-table th, .tab-content table.option-list-table td {
+  padding: 10px;
+}
+.tab-content table.option-list-table thead th {
+  background-color: #abafb6;
+  color: #fcfcfc;
+}
+.tab-content table.option-list-table thead th:first-of-type {
+  border-radius: 10px 0 0 0;
+}
+.tab-content table.option-list-table thead th:last-of-type {
+  border-radius: 0 10px 0 0;
+}
+.tab-content table.option-list-table tbody tr:last-of-type th:first-of-type {
+  border-radius: 0 0 0 10px;
+}
+.tab-content table.option-list-table tbody tr:last-of-type td:last-of-type {
+  border-radius: 0 0 10px 0;
+}
+.tab-content table.option-list-table tbody td {
+  font-weight: 100;
+}
+.tab-content table.option-list-table tbody span {
+  border: 1px solid #cccfd3;
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 4px;
+}
+.tab-content .comment {
+  color: #83878f;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.02rem;
+  padding: 5px;
+}
+.tab-content .comment button {
+  vertical-align: baseline;
+}
+
+#buttonComponentList li {
+  margin-bottom: 30px;
+}
+#buttonComponentList li .flex {
+  flex-flow: row wrap;
+}
+#buttonComponentList li .round-box {
+  margin-bottom: 30px;
+}
+#buttonComponentList li .round-box.responsive {
+  width: 32%;
+  margin-right: 2%;
+}
+#buttonComponentList li .round-box.responsive:nth-child(3n) {
+  margin-right: 0;
+}
+#buttonComponentList li .round-box:last-of-type {
+  margin-bottom: 0;
+}
+#buttonComponentList li table {
+  width: 100%;
+}
+#buttonComponentList li table thead {
+  border-top: 1px solid #cccfd3;
+  border-bottom: 1px solid #cccfd3;
+}
+#buttonComponentList li table thead th:nth-of-type(5) {
+  border-left: 1px solid #cccfd3;
+}
+#buttonComponentList li table tbody {
+  border-bottom: 1px solid #cccfd3;
+}
+#buttonComponentList li table tbody th {
+  border-right: 1px solid #cccfd3;
+}
+#buttonComponentList li table tbody th:last-of-type {
+  border-left: 1px solid #cccfd3;
+}
+#buttonComponentList li table th {
+  text-align: center;
+  vertical-align: middle;
+  padding: 20px;
+}
+#buttonComponentList li table td {
+  padding: 20px;
+  text-align: center;
+}
+#buttonComponentList li table span {
+  color: #111;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.02rem;
+}
+#buttonComponentList li table button {
+  color: #5379fd;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.02rem;
+  display: inline-block;
+  margin: 10px;
+  white-space: nowrap;
+}
+#buttonComponentList li table button.bg-primary {
+  color: #fcfcfc;
+}
+
+@media all and (max-width: 2100px) {
+  #buttonComponentList li .round-box.responsive {
+    width: 49%;
+    margin-right: 2%;
+  }
+  #buttonComponentList li .round-box.responsive:nth-child(3n) {
+    margin-right: 2%;
+  }
+  #buttonComponentList li .round-box.responsive:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+#colorComponentList li {
+  position: relative;
+  width: calc((100% - 200px) / 11);
+  margin-bottom: 40px;
+  box-shadow: 0px 12px 20px -4px rgba(16, 24, 40, 0.2), -5px -2px 10px 0px rgba(16, 24, 40, 0.05);
+  border-radius: 12px;
+}
+#colorComponentList li:nth-of-type(11n) {
+  margin-right: 0;
+}
+#colorComponentList li div {
+  padding: 10px;
+  margin-top: 70px;
+  background: white;
+  border-radius: 0 0 12px 12px;
+}
+#colorComponentList li div p {
+  color: #111;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.02rem;
+  margin-bottom: 3px;
+}
+#colorComponentList li div p:last-of-type {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#colorComponentList li div button {
+  color: #111;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.02rem;
+  display: block;
+  margin-top: 10px;
+  border: 1px solid #eee;
+  padding: 6px 10px;
+  width: 100%;
+  border-radius: 12px;
+}
+#colorComponentList li div button:first-of-type {
+  text-shadow: 0 0 2px #fcfcfc;
+}
+#colorComponentList li div button:last-of-type {
+  text-shadow: 0 0 2px #888888;
+}
+
+#iconComponentList ul:not(#customIcons) li {
+  border: 2px solid #e4e5e8;
+  background-color: #fcfcfc;
+  border-bottom: 0;
+  cursor: pointer;
+}
+#iconComponentList ul:not(#customIcons) li:first-of-type {
+  border-radius: 20px 20px 0 0;
+}
+#iconComponentList ul:not(#customIcons) li:last-of-type {
+  border-bottom: 2px solid #e4e5e8;
+  border-radius: 0 0 20px 20px;
+}
+#iconComponentList ul:not(#customIcons) li.on div {
+  display: flex;
+}
+#iconComponentList ul:not(#customIcons) li.on h4 {
+  border-bottom: 2px dashed #e4e5e8;
+}
+#iconComponentList ul:not(#customIcons) li.on h4::after {
+  background: transparent url("../img/ic-short-arrow-up.png") no-repeat center;
+  background-size: contain;
+}
+#iconComponentList ul:not(#customIcons) li div {
+  display: none;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+#iconComponentList ul:not(#customIcons) li h4 {
+  margin-bottom: 0;
+  padding: 20px 30px;
+}
+#iconComponentList ul:not(#customIcons) li h4::after {
+  background: transparent url("../img/ic-short-arrow-down.png") no-repeat center;
+  background-size: contain;
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+#iconComponentList button {
+  width: 120px;
+  height: 120px;
+  margin: 20px;
+  padding: 10px 15px 15px;
+  flex: 0 0 auto;
+  background: white;
+  box-shadow: 0px 7px 10px -4px rgba(16, 24, 40, 0.2), -5px -2px 10px 0px rgba(16, 24, 40, 0.05);
+  border-radius: 12px;
+  vertical-align: top;
+  text-align: center;
+}
+#iconComponentList button:hover {
+  background: #f5faff;
+}
+#iconComponentList button:focus {
+  outline: 1px solid #2e5bfa;
+}
+#iconComponentList button span {
+  vertical-align: middle;
+}
+#iconComponentList button p {
+  color: #111;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.02rem;
+  margin-top: 10px;
+  word-break: keep-all;
+}
+#iconComponentList #customIcons li {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+}
+#iconComponentList #customIcons button {
+  width: 130px;
+  height: 130px;
+  background: #e5e7e8;
+}
+#iconComponentList #customIcons button:hover {
+  background: #dadbdd;
+}
+
+#typographyComponentList div:nth-of-type(n + 3):nth-of-type(-n + 6) table td:last-of-type {
+  width: 75%;
+}
+#typographyComponentList table {
+  width: 100%;
+}
+#typographyComponentList table td {
+  border-bottom: 1px solid #e4e5e8;
+  padding: 15px 20px;
+}
+#typographyComponentList table td:last-of-type {
+  width: 50%;
+}
+
+.tab-content.accordion {
+  border: 0;
+}
+
+#dropdownComponentList {
+  padding-bottom: 300px;
+}

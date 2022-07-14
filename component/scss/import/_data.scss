@@ -1,0 +1,127 @@
+@charset "utf-8";
+// Option list - Data
+// 5-1. Checkbox
+// 5-2. Form
+// 5-3. Input
+// 5-4. Select
+
+@import "../common/_variables", "../common/_mixins";
+
+/*! ************************************************* 5-1. Checkbox **************************************************/
+
+input:not([type="checkbox"]),
+input:not([type="radio"]) {
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid map-get($grays, 300);
+  &:hover {
+    border: 1px solid map-get($blues, 400);
+  }
+  &:focus {
+    border: 2px solid map-get($blues, 400);
+  }
+  @each $icon, $url in $icSearch {
+    &.search-#{$icon} {
+      padding-right: 30px;
+      background: url(#{"../../img/" + $url}) no-repeat center right 12px;
+      background-size: 16px;
+    }
+  }
+}
+/*! ************************************************* 5-4. Select **************************************************/
+.select {
+  position: relative;
+  & [data-select-button] {
+    @include border;
+
+    border-radius: map-get($radius, sm);
+    padding: map-get($btnSize, md);
+
+    &:hover {
+      @include border(full, $color-primary);
+    }
+    &:active {
+      @include border(full, $color-primary);
+      outline: 1px solid $color-primary;
+    }
+    &:disabled {
+      color: map-get($grays, 100);
+      background-color: $gray300;
+      cursor: default;
+      &:hover {
+        @include border(full, $gray300);
+      }
+      &:active {
+        @include border(full, $gray300);
+        outline: 0;
+      }
+    }
+    &.on {
+      @include border(full, $color-primary);
+    }
+    &.error {
+      @include border(full, map-get($reds, 500));
+      &:hover {
+        @include border(full, $color-primary);
+      }
+    }
+    &.radius-circle {
+      padding: 10px;
+      border-radius: 50%;
+    }
+  }
+  & [data-select-button="slide"] + [data-select-item] {
+    @include show;
+    opacity: 0;
+    &.on {
+      opacity: 1;
+      & li {
+        @include show(slide, auto, 0.2s);
+        padding: 12px 18px;
+      }
+    }
+    & li {
+      @include hide(slide, 0.2s);
+      padding: 0 18px;
+      display: block;
+    }
+  }
+  & [data-select-item] {
+    @include position(absolute, left, 0, top, 55px);
+    border-radius: map-get($radius, sm);
+    background-color: #fff;
+    box-shadow: 0px 0px 7px 1px #cccfd3;
+    transition: all 0.2s;
+    z-index: 1;
+    & li {
+      &:hover {
+        background-color: $color-secondery;
+      }
+      width: 100%;
+      white-space: nowrap;
+    }
+  }
+  & [data-select-item="normal"] {
+    @include hide;
+    &.on {
+      @include show;
+    }
+    & li {
+      padding: map-get($btnSize, md);
+    }
+  }
+  & [data-select-item="overlap"],
+  & [data-select-item="full"] {
+    @include hide;
+    @include position(absolute, left, -0.5px, top, -0.5px);
+    &.on {
+      @include show;
+    }
+    & li {
+      padding: map-get($btnSize, md);
+    }
+  }
+  & [data-select-item="full"] {
+    @include position(absolute, left, 0, top, 55px);
+  }
+}

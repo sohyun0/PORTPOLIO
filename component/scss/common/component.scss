@@ -1,0 +1,21 @@
+@charset "utf-8";
+@import "_variables", "_mixins";
+/*! ************************************************* component style **************************************************/
+
+// /******* root font size *******/
+// 폰트사이즈 16을 기준으로 0.25씩 변환해서  510~320까지 10씩 미디어쿼리 생성 px 을 %로 변환해서 삽입
+$MediaMin: 320;
+$MediaMax: 510;
+$MediaStep: 10;
+$rootFontSize: 16;
+$rootFontSizeStep: 0.25;
+@while $MediaMax > $MediaMin {
+  $MediaMax: $MediaMax - $MediaStep;
+  $rootFontSize: $rootFontSize - $rootFontSizeStep;
+  @include customRespond(#{$MediaMax}, "pc") {
+    html {
+      font-size: PXtoPER($rootFontSize);
+    }
+  }
+}
+@import "../import/general", "../import/_navigation", "../import/_layout", "../import/_display", "../import/_data";

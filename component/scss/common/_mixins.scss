@@ -1,0 +1,314 @@
+@charset "utf-8";
+@import "_variables";
+// function , mixin 사용시 파라미터 값에 대한 예시 혹은 타입 주석표시
+//  *******************************************  function  *******************************************
+
+// 단위 추가
+/// @param {Number} $_value
+@function unit($_value, $unit: px) {
+  @if $_value == 0 {
+    @return $_value;
+  } @else {
+    @return $_value + $unit;
+  }
+}
+// 단위 삭제
+/// @param {Number | px} - 100 or 100px or 100% or 100vw  . . . etc
+@function remove-unit($value) {
+  @return (calc($value / ($value * 0 + 1)));
+}
+
+//rem 변환
+/// @param {Number} $px - Design px
+/// @param {Number} $base - Standard px
+/// @return {Number | rem}  - 1rem
+@function PXtoREM($px, $base: 16) {
+  @if $px == 0 {
+    @return $px;
+  }
+  @return remove-unit(calc($px / $base)) * 1rem;
+}
+
+//% 변환 ==> font-size 변환시 사용
+/// @param {Number} $px - Design px
+/// @param {Number} $base - Standard px
+/// @return {Number | %}  - 6.25%
+@function PXtoPER($px, $base: 16) {
+  @if $px == 0 {
+    @return $px;
+  }
+  @return remove-unit(calc($px / 16 * 100)) * 1%;
+}
+//vw, vh 변환
+/// @param {Number} $px - design px
+/// @param {Number} $base - breakpoints
+/// @return {Number | PX}  - **vw or **vh
+@function PXtoVW($px, $base) {
+  @if $px == 0 {
+    @return $px;
+  }
+  @return remove-unit(calc($px * 100 / $base)) * 1vw;
+}
+@function PXtoVH($px, $base) {
+  @if $px == 0 {
+    @return $px;
+  }
+  @return remove-unit(calc($px * 100 / $base)) * 1vh;
+}
+
+//  *******************************************  mixin  *******************************************
+
+//  *******************************************  General  *******************************************
+
+//배경이미지 (중앙정렬)
+/// @param {String | code} $color -background-color: transparent , #fff , rgb(255,255,255)
+/// @param {String | url} $img - img url(../img/background.png)
+@mixin background($color: (), $img: ()) {
+  background: $color url($img) no-repeat center;
+  background-size: contain;
+}
+//배경이미지 (좌측정렬) - param 중앙정렬과 동일
+@mixin backgroundLeft($color: (), $img: ()) {
+  background: $color url($img) no-repeat center left;
+  background-size: contain;
+}
+//배경이미지 (우측정렬)  - param 중앙정렬과 동일
+@mixin backgroundRight($color: (), $img: ()) {
+  background: $color url($img) no-repeat center right;
+  background-size: contain;
+}
+
+//배경 아이콘 삽입(방향, 클래스명, 색상, 아이콘 맵, 네임)
+/// @param {String} $direction - 아이콘의 방향 {left, right}
+/// @param {String} $class - 아이콘의 클래스 명
+/// @param {String} $value - 아이콘의 색상 혹은 상태 (default, blue, on, off ... etc )
+/// @param {String} $iconGroup - _variables에 정의되어 있는 아이콘 그룹
+/// @param {String} $iconName - 아이콘 맵의 key name ==> value와 동일하게 설정한 경우가 많음  _variables 참고
+@mixin bgIcon($direction: (), $class: (), $value: (), $iconGroup: (), $iconName: (), $imgURL: "../../img/") {
+  // left or only-icon
+  @if ($direction == left) {
+    &.#{$class} {
+      @if ($iconName == default) {
+        &::before {
+          @include background(transparent, $imgURL + map-get($iconGroup, $iconName));
+        }
+      } @else {
+        &.#{$value}::before {
+          @include background(transparent, $imgURL + map-get($iconGroup, $iconName));
+        }
+      }
+    }
+  } @else {
+    // right
+    &.#{$direction}:not(.only-icon) {
+      &.#{$class} {
+        @if ($iconName == default) {
+          &::after {
+            @include background(transparent, $imgURL + map-get($iconGroup, $iconName));
+          }
+        } @else {
+          &.#{$value}::after {
+            @include background(transparent, $imgURL + map-get($iconGroup, $iconName));
+          }
+        }
+      }
+    }
+  }
+}
+
+//폰트사이즈
+@mixin font($font: $fs-md, $fontWeight: 400, $color: $main-fontColor) {
+  color: $color;
+  font-size: PXtoREM(nth($font, 1));
+  font-weight: $fontWeight;
+  line-height: nth($font, 2);
+  letter-spacing: nth($font, 3);
+}
+
+//말줄임표
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin ellipsis-v {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.5em;
+  height: 3em;
+}
+
+//  *******************************************  Layout   *******************************************
+@mixin container($minNmax: max, $px: 1600px) {
+  $width: $minNmax + "-width";
+  width: 100%;
+  #{$width}: $px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+@mixin blind {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999em;
+  z-index: -100;
+}
+
+@mixin clearfix {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@mixin emptyContent($mode: inline-block) {
+  content: "";
+  display: $mode;
+}
+
+/// @param {String} $color - background-color:code
+@mixin dimmed($color: rgba(0, 0, 0, 0.2)) {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $color;
+  z-index: 1;
+}
+
+/// @param {String} $position - position: fixed, absolute ...
+/// @param {String} $horizDirection - left , right
+/// @param {Number} $horizValue - default : 0
+/// @param {String} $vertiDirection - top, bottom
+/// @param {Number} $vertiValue - default : 0
+/// @param {Number} $translateX - default : 0
+/// @param {Number} $translateY - default : 0
+@mixin position($position: absolute, $horizDirection: left, $horizValue: 0, $vertiDirection: top, $vertiValue: 0, $translateX: 0, $translateY: 0) {
+  position: $position;
+  #{$horizDirection}: $horizValue;
+  #{$vertiDirection}: $vertiValue;
+  transform: translate($translateX, $translateY);
+}
+
+@mixin absoluteCenter($horizValue: 50, $vertiValue: 50, $translateX: -50%, $translateY: -50%) {
+  position: absolute;
+  @if ($horizValue == onlyT) {
+    top: 50%;
+    left: 50%;
+    transform: translate($vertiValue, $translateX);
+  } @else {
+    top: $vertiValue;
+    left: $horizValue;
+    transform: translate($translateX, $translateY);
+  }
+}
+/// @param {String} $mode - display:$mode
+@mixin hide($mode: none, $sec: 0.3s) {
+  @if ($mode == slide) {
+    height: 0;
+    transition: all $sec;
+  } @else {
+    display: $mode;
+  }
+}
+/// @param {String} $mode - display:$mode
+@mixin show($mode: block, $height: auto, $sec: 0.3s) {
+  @if ($mode == slide) {
+    height: auto;
+    transition: all $sec;
+  } @else {
+    display: $mode;
+  }
+}
+
+/// @param {String} $wrap - flex-wrap : $wrap
+@mixin flex($wrap: wrap, $justify: baseline) {
+  display: flex;
+  flex-flow: $wrap row;
+  justify-content: $justify;
+}
+
+/// @param {Number} $start - start number
+/// @param {Number} $end - end number
+@function createSpacingNum($start, $end) {
+  $_size: ();
+  @for $_value from $start through $end {
+    // $_value를 start부터 end까지 반복,
+    $_size: append($_size, $_value);
+  }
+  @return $_size;
+}
+
+/// @param {Number} $spacingName _variables 3-4. Spacing
+/// @param {Number} $position  _variables 3-4. Spacing
+/// @param {Number} $size  start ~ end
+/// @param {Boolean} $responsive
+@mixin createSpacingClassList($spacingName: (), $position: (), $size: (), $responsive: true) {
+  @each $_preKey, $_preValue in $spacingName {
+    @each $_px in $size {
+      .#{$_preKey}#{$_px} {
+        @if $responsive {
+          #{$_preValue}: PXtoVW($_px, map-get($breakpoints, "mob-medium"));
+          // 커스텀 단위 만들고 싶을때 사용
+          // #{$_preValue}: PXtoVW($_px, 360);
+        } @else {
+          #{$_preValue}: unit($_px);
+        }
+      }
+      @each $_sufKey, $_sufValue in $position {
+        .#{$_preKey}#{$_sufKey}#{$_px} {
+          @if $responsive {
+            #{$_preValue}-#{$_sufValue}: PXtoVW($_px, map-get($breakpoints, "mob-medium"));
+            // 커스텀 단위 만들고 싶을때 사용
+            // #{$_preValue}-#{$_sufValue}: PXtoVW($_px, 360);
+          } @else {
+            #{$_preValue}-#{$_sufValue}: unit($_px);
+          }
+        }
+      }
+    }
+  }
+}
+
+//  *******************************************  Display  *******************************************
+
+/// @param {String} $direction - full,top,bottom,left,right
+/// @param {String} $color - color:code
+/// @param {Number} $width - default : 1px
+/// @param {String} $style - solid, dotted ....
+@mixin border($direction: full, $color: map-get($grays, 300), $width: 1px, $style: solid) {
+  @if ($direction == full) {
+    border: $width $style $color;
+  } @else {
+    $border: "border-" + $direction;
+    #{$border}: $width $style $color;
+  }
+}
+
+//  *******************************************  Breakpoints  *******************************************
+
+// 미디어 쿼리
+/// @param {String} $point - breakpoints px {mob-extra-small , mob-small , mob-medium , mob , tablet-medium, tablet-large , pc , pc-medium , pc-large , pc-extra-large}
+/// @param {String} $start - breakpointsStart {pc, mob}
+@mixin respond($point, $start) {
+  @media all and (#{unquote(map-get($breakpointsStart,$start))}-width: #{map-get($breakpoints,$point)}px) {
+    @content;
+  }
+}
+// 커스텀 미디어 쿼리
+/// @param {Number} $point - breakpoints px 1920, 720, 480 . . . {1920, "pc"}
+/// @param {String} $start - breakpointsStart {pc, mob}
+@mixin customRespond($point: (), $start) {
+  @media all and (#{unquote(map-get($breakpointsStart,$start))}-width: #{$point}px) {
+    @content;
+  }
+}
