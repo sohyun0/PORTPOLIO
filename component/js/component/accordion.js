@@ -1,4 +1,4 @@
-import { $selector, $selectorAll } from "../common/_variables.js";
+import { $selector, $selectorAll } from "../common/variables.js";
 
 /**
  * @param {object} header  accordion menu title array

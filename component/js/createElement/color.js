@@ -1,4 +1,4 @@
-import { $createElement, $selector, $selectorAll } from "../common/_variables.js";
+import { $createElement, $selector, $selectorAll } from "../common/variables.js";
 import { copy } from "../common/view.js";
 
 // {colorNun : colorCode}
