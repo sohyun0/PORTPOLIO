@@ -116,6 +116,9 @@ $gray300: map-get($grays, 300);
     box-shadow: 0px 0px 7px 1px #cccfd3;
     transition: all 0.2s;
     z-index: 1;
+    & a {
+      display: block;
+    }
     &.on {
       @include show;
     }
@@ -135,6 +138,30 @@ $gray300: map-get($grays, 300);
     }
     & [data-accordion-body].on {
       padding: 0;
+    }
+  }
+  & [data-dropdown-item="nested"] {
+    & li {
+      position: relative;
+      &.link:hover {
+        background-color: $color-secondery;
+      }
+      &.depth-open::after {
+        @include emptyContent;
+        @include position(relative, right, 0, top, 50%, 0, 2px);
+        @include background(transparent, "../../img/ic-short-arrow-right.png");
+        width: 16px;
+        height: 16px;
+      }
+      & .depth {
+        @include position;
+        @include hide;
+        background-color: #fff;
+        border-radius: map-get($radius, sm);
+        &.on {
+          @include show;
+        }
+      }
     }
   }
 }

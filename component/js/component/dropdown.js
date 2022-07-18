@@ -46,7 +46,6 @@ function dropdownEvent(button, item, eventType, itemType) {
   if (_itemType === "normal" || _itemType === undefined) {
     for (let i = 0; i < item.children.length; i++) {
       item.children[i].onclick = function () {
-        const _this = this;
         for (let j = 0; j < item.children.length; j++) {
           if (item.children[j].classList.contains("active")) {
             item.children[j].setAttribute("class", "");
@@ -76,6 +75,25 @@ function dropdownEvent(button, item, eventType, itemType) {
         }
         _this.classList.add("active");
         hide();
+      };
+    }
+  } else if (_itemType === "nested") {
+    const itemOpen = item.querySelectorAll(".depth-open");
+    for (let i = 0; i < itemOpen.length; i++) {
+      itemOpen[i].onclick = function () {
+        const _this = this;
+        const _child = _this.firstElementChild;
+        if (_child.classList.contains("depth")) {
+          _child.classList.add("on");
+          const width = _this.clientWidth;
+          _this.firstElementChild.style.cssText = "left:" + width + "px";
+        }
+      };
+      itemOpen[i].onmouseleave = function () {
+        const _this = this;
+        if (_this.firstElementChild.classList.contains("on")) {
+          _this.firstElementChild.classList.remove("on");
+        }
       };
     }
   }

@@ -66,6 +66,7 @@ nav.wide .sidebar ul li button:hover::before {
   top: 53%;
   transform: translate(-50%, -50%);
   content: "";
+  display: inline-block;
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -183,6 +184,7 @@ nav .narrow:hover::before {
   left: 50%;
   transform: translate(-64%, -50%);
   content: "";
+  display: inline-block;
   width: 20px;
   height: 20px;
   background-color: white;
@@ -198,6 +200,7 @@ nav .narrow:hover::after {
   background: transparent url("../img/ic-short-arrow-left-blue.png") no-repeat center;
   background-size: contain;
   content: "";
+  display: inline-block;
   width: 10px;
   height: 10px;
   z-index: 2;
@@ -606,6 +609,7 @@ nav .narrow.on:hover::after {
   background: transparent url("../img/ic-short-arrow-down.png") no-repeat center;
   background-size: contain;
   content: "";
+  display: inline-block;
   display: inline-block;
   width: 18px;
   height: 18px;

@@ -274,36 +274,29 @@ $gray-secondery: map-get($grays, 700);
   &[class*=" only-icon"] {
     &::before {
       @include emptyContent;
+      @include position(relative);
 
-      position: relative;
-      top: 0;
-      left: 0px;
       vertical-align: middle;
     }
   }
   &[class*=" left"]:not(.only-icon) {
     &::before {
       @include emptyContent;
+      @include position(relative, left, -5px);
 
-      position: relative;
-      top: 0;
-      left: -5px;
       vertical-align: middle;
     }
   }
   &[class*=" right"]:not(.only-icon) {
     &::after {
       @include emptyContent;
-      position: relative;
-      top: 0;
-      right: -5px;
+      @include position(relative, right, -5px);
+
       vertical-align: middle;
     }
     &.end::after {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+      @include emptyContent;
+      @include position(absolute, right, 20px, top, 50%, 0, -50%);
     }
   }
   @each $iconName, $iconUrl in $icSearch {

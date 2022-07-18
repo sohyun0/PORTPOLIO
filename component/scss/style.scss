@@ -53,8 +53,8 @@ nav {
           background-color: transparent;
           &::before {
             @include position(absolute, left, 54%, top, 53%, -50%, -50%);
+            @include emptyContent;
 
-            content: "";
             width: 35px;
             height: 35px;
             border-radius: 50%;
@@ -160,8 +160,8 @@ nav {
     }
     &:hover::before {
       @include absoluteCenter(onlyT, -64%, -50%);
+      @include emptyContent;
 
-      content: "";
       width: 20px;
       height: 20px;
       background-color: white;
@@ -172,8 +172,8 @@ nav {
     &:hover::after {
       @include position(absolute, right, 0, top, 50%, 0, -50%);
       @include background(transparent, "../img/ic-short-arrow-left-blue.png");
+      @include emptyContent;
 
-      content: "";
       width: 10px;
       height: 10px;
       z-index: 2;
@@ -544,8 +544,8 @@ nav {
         padding: 20px 30px;
         &::after {
           @include background(transparent, "../img/" + map-get($icShortArrowDown, "default"));
+          @include emptyContent;
 
-          content: "";
           display: inline-block;
           width: 18px;
           height: 18px;
