@@ -157,7 +157,7 @@ $gray300: map-get($grays, 300);
         @include position;
         @include hide;
         background-color: #fff;
-        border-radius: map-get($radius, sm);
+        border-radius: 0 map-get($radius, sm) map-get($radius, sm) 0;
         &.on {
           @include show;
         }
