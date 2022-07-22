@@ -6,36 +6,36 @@ import { $selector, $selectorAll } from "../common/variables.js";
  * @param {string} eventType  click or hover
  * @param {string} itemType  normal or accordion or nested
  */
-function dropdownEvent(button, item, eventType, itemType) {
+function dropdownEvent(button, item, eventType) {
   const _button = button;
   const _item = item;
   const _event = eventType;
-  const _itemType = itemType;
+  const _itemType = _item.dataset.dropdownItem;
 
   //   button event
   function show() {
-    button.classList.add("on");
-    item.classList.add("on");
+    _button.classList.add("on");
+    _item.classList.add("on");
   }
   function hide() {
-    button.classList.remove("on");
-    item.classList.remove("on");
+    _button.classList.remove("on");
+    _item.classList.remove("on");
   }
   function btnMinWidth() {
-    const _minWidth = button.clientWidth;
-    button.nextElementSibling.style.cssText = "min-width : " + (_minWidth + 3) + "px";
+    const _minWidth = _button.clientWidth;
+    _button.nextElementSibling.style.cssText = "min-width : " + (_minWidth + 3) + "px";
   }
   if (_event === "click" || _event === undefined) {
-    button.onclick = function () {
-      if (!button.classList.contains("on")) {
+    _button.onclick = function () {
+      if (!_button.classList.contains("on")) {
         show();
       } else {
         hide();
       }
     };
   } else if (_event === "mouseover") {
-    button.onmouseover = function () {
-      if (!button.classList.contains("on")) {
+    _button.onmouseover = function () {
+      if (!_button.classList.contains("on")) {
         show();
       } else {
         hide();
@@ -44,11 +44,11 @@ function dropdownEvent(button, item, eventType, itemType) {
   }
   btnMinWidth();
   if (_itemType === "normal" || _itemType === undefined) {
-    for (let i = 0; i < item.children.length; i++) {
-      item.children[i].onclick = function () {
-        for (let j = 0; j < item.children.length; j++) {
-          if (item.children[j].classList.contains("active")) {
-            item.children[j].setAttribute("class", "");
+    for (let i = 0; i < _item.children.length; i++) {
+      _item.children[i].onclick = function () {
+        for (let j = 0; j < _item.children.length; j++) {
+          if (_item.children[j].classList.contains("active")) {
+            _item.children[j].setAttribute("class", "");
           }
         }
         _this.classList.add("active");
@@ -56,7 +56,7 @@ function dropdownEvent(button, item, eventType, itemType) {
       };
     }
   } else if (_itemType === "accordion") {
-    const _accordionBody = item.children;
+    const _accordionBody = _item.children;
     let _body = [];
     for (let i = 0; i < _accordionBody.length; i++) {
       if (_accordionBody[i].dataset.accordionBody) {
@@ -78,9 +78,9 @@ function dropdownEvent(button, item, eventType, itemType) {
       };
     }
   } else if (_itemType === "nested") {
-    const itemOpen = item.querySelectorAll(".depth-open");
-    for (let i = 0; i < itemOpen.length; i++) {
-      itemOpen[i].onclick = function () {
+    const _itemOpen = _item.querySelectorAll(".depth-open");
+    for (let i = 0; i < _itemOpen.length; i++) {
+      _itemOpen[i].onclick = function () {
         const _this = this;
         const _child = _this.firstElementChild;
         if (_child.classList.contains("depth")) {
@@ -89,7 +89,7 @@ function dropdownEvent(button, item, eventType, itemType) {
           _this.firstElementChild.style.cssText = "left:" + width + "px";
         }
       };
-      itemOpen[i].onmouseleave = function () {
+      _itemOpen[i].onmouseleave = function () {
         const _this = this;
         if (_this.firstElementChild.classList.contains("on")) {
           _this.firstElementChild.classList.remove("on");
@@ -120,5 +120,5 @@ export function dropdown(target, option) {
       _item = _tag[i];
     }
   }
-  dropdownEvent(_button, _item, option.eventType, option.itemType);
+  dropdownEvent(_button, _item, option.eventType);
 }
