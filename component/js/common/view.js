@@ -65,10 +65,18 @@ const dropdown2_1 = new dropdown(".dropdown.type2-1", {
 const dropdown2_1accordionM = new accordion(".dropdown .accordion.multi", {
   multiClose: true,
 });
-
 const dropdown2_2 = new dropdown(".dropdown.type2-2", {
   itemType: "nested",
 });
+
+//menu
+
+import { menu } from "../component/menu.js";
+const menu1_1 = new menu(".menu.type1-1", {});
+const menu1_2 = new menu(".menu.type1-2", {
+  eventType: "click",
+});
+
 // select
 import { select } from "../component/select.js";
 const selectbox1 = new select(".select.type1", {

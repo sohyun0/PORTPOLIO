@@ -385,6 +385,7 @@ nav {
   }
 }
 
+// general
 #buttonComponentList {
   & li {
     margin-bottom: 30px;
@@ -613,9 +614,20 @@ nav {
     }
   }
 }
+
+// navigation
 .tab-content.accordion {
   border: 0;
 }
 #dropdownComponentList {
   padding-bottom: 300px;
+}
+#menuComponentList {
+  & .menu-container {
+    padding: 20px;
+    background: $gray-secondery;
+    & * {
+      color: #fcfcfc;
+    }
+  }
 }

@@ -104,7 +104,7 @@ function dropdownEvent(button, item, eventType, itemType) {
 
 /**
  * @param {string} target  dropdown menu  wrapper element
- * @param {string} option  dropdown type, toggle Icon Class on&off
+ * @param {string} option  dropdown type(itemType , eventType)
  */
 export function dropdown(target, option) {
   const _this = this;

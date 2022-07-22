@@ -681,3 +681,11 @@ nav .narrow.on:hover::after {
 #dropdownComponentList {
   padding-bottom: 300px;
 }
+
+#menuComponentList .menu-container {
+  padding: 20px;
+  background: #414650;
+}
+#menuComponentList .menu-container * {
+  color: #fcfcfc;
+}

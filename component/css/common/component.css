@@ -2524,6 +2524,12 @@
 .dropdown [data-dropdown-item=accordion] [data-accordion-header] {
   padding: 12px 16px;
 }
+.dropdown [data-dropdown-item=accordion] [data-accordion-header].ic[class*=" right"]:not(.only-icon).end::after {
+  position: relative;
+  right: -5px;
+  top: 0;
+  transform: translate(0, 0);
+}
 .dropdown [data-dropdown-item=accordion] [data-accordion-body].on {
   padding: 0;
 }
@@ -2559,6 +2565,52 @@
 }
 
 /*! ************************************************* 2-3. Menu **************************************************/
+.menu [data-menu-list*=oriz] > li {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+}
+.menu [data-menu-list*=oriz] > li:not(.link) {
+  padding: 15px;
+}
+.menu [data-menu-list*=oriz] > li .depth {
+  display: none;
+  white-space: nowrap;
+  background-color: #83878f;
+  z-index: 1;
+}
+.menu [data-menu-list*=oriz]:not(.right) .depth {
+  position: absolute;
+  left: 15px;
+  top: 60px;
+  transform: translate(0, 0);
+}
+.menu [data-menu-list*=oriz] a {
+  display: block;
+  padding: 15px;
+}
+.menu [data-menu-list*=oriz].right {
+  text-align: right;
+}
+.menu [data-menu-list*=oriz].right .depth {
+  position: absolute;
+  right: 15px;
+  top: 60px;
+  transform: translate(0, 0);
+}
+.menu [data-menu-list*=oriz][data-menu-list*=nested] .depth-open::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  right: 0;
+  top: 50%;
+  transform: translate(0, 2px);
+  background: transparent url("../../img/ic-short-arrow-right-white.png") no-repeat center;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+}
+
 /*! ************************************************* 2-4. Pagination **************************************************/
 /*! ************************************************* 2-5. Steps **************************************************/
 /*! ************************************************* 3-1. Flex*************************************************/
@@ -4747,6 +4799,31 @@
   }
 }
 /*! ************************************************* 4-1. Alert*************************************************/
+/*! ************************************************* 4-15. Tooltip*************************************************/
+.tooltip {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.tooltip .tooltip-content {
+  display: none;
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  transform: translate(0, 0);
+  background-color: #242930;
+  border-radius: 0 10px 10px;
+  white-space: nowrap;
+  z-index: 1;
+}
+.tooltip .tooltip-content.comment {
+  padding: 10px;
+  color: #fcfcfc;
+}
+.tooltip:hover .tooltip-content {
+  display: block;
+}
+
 /*! ************************************************* 5-1. Checkbox **************************************************/
 input:not([type=checkbox]),
 input:not([type=radio]) {
